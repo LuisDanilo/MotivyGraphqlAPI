@@ -1,0 +1,29 @@
+version: '3'
+services:
+  db:
+    container_name: database
+    image: postgres
+    restart: unless-stopped
+    environment:
+      - POSTGRES_PASSWORD=fb4edf5e391cdf7c
+      - POSTGRES_USER=user
+      - POSTGRES_DB=motivy
+    ports:
+      - "5432:5432"
+    volumes:
+      - "./pgdata:/var/lib/postgresql/data"
+
+  api:
+    container_name: api
+    restart: unless-stopped
+    depends_on:
+      - db
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+    environment:
+      - STAGE=staging
