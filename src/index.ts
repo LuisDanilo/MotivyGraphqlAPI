@@ -7,9 +7,7 @@ async function main() {
     console.log("Starting server...")
     const app = await startServer()
     app.listen(5000)
-    console.log("Server started on port 5000");
-    console.log("Server started on port 5000");
-    
+    console.log("Server started on port 5000")
 }
 
 main()

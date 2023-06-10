@@ -1,8 +1,8 @@
 import express from "express"
 import { ApolloServer } from "apollo-server-express"
-import { PingResolver } from "./resolvers/ping"
 import { buildSchema } from "type-graphql"
 import { ProductResolver } from "./resolvers/ProductResolver"
+import { UserResolver } from "./resolvers/UserResolver"
 
 
 export async function startServer() {
@@ -10,7 +10,7 @@ export async function startServer() {
 
     const server = new ApolloServer({
         schema: await buildSchema({
-            resolvers: [PingResolver, ProductResolver],
+            resolvers: [ProductResolver, UserResolver],
             validate: false
         }),
         context: ({req, res}) => ({req, res})

@@ -1,5 +1,6 @@
 import { DataSource } from 'typeorm'
 import { Product } from '../entity/Product'
+import { User } from '../entity/User'
 
 const appDataSource = new DataSource({
     type: "postgres",
@@ -8,7 +9,7 @@ const appDataSource = new DataSource({
     username: 'user',
     password: 'fb4edf5e391cdf7c',
     database: 'motivy',
-    entities: [Product],
+    entities: [Product, User],
     synchronize: true
 })
 
